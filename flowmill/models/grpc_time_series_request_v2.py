@@ -40,12 +40,11 @@ class GrpcTimeSeriesRequestV2(object):
         'source_grouping': 'list[str]',
         'destination_grouping': 'list[str]',
         'directionality': 'GrpcDirectionality',
-        'locality': 'GrpcLocality',
         'top_k': 'int',
-        'min_total_values_threshold': 'float',
         'no_rollups': 'bool',
         'label_equality': 'list[GrpcLabelEqualityPair]',
-        'aggregation': 'GrpcAggregationMethod'
+        'aggregation': 'GrpcAggregationMethod',
+        'no_zero_padding': 'bool'
     }
 
     attribute_map = {
@@ -58,15 +57,14 @@ class GrpcTimeSeriesRequestV2(object):
         'source_grouping': 'sourceGrouping',
         'destination_grouping': 'destinationGrouping',
         'directionality': 'directionality',
-        'locality': 'locality',
         'top_k': 'topK',
-        'min_total_values_threshold': 'minTotalValuesThreshold',
         'no_rollups': 'noRollups',
         'label_equality': 'labelEquality',
-        'aggregation': 'aggregation'
+        'aggregation': 'aggregation',
+        'no_zero_padding': 'noZeroPadding'
     }
 
-    def __init__(self, end=None, duration=None, num_steps=None, source_filters=None, destination_filters=None, metric=None, source_grouping=None, destination_grouping=None, directionality=None, locality=None, top_k=None, min_total_values_threshold=None, no_rollups=None, label_equality=None, aggregation=None):  # noqa: E501
+    def __init__(self, end=None, duration=None, num_steps=None, source_filters=None, destination_filters=None, metric=None, source_grouping=None, destination_grouping=None, directionality=None, top_k=None, no_rollups=None, label_equality=None, aggregation=None, no_zero_padding=None):  # noqa: E501
         """GrpcTimeSeriesRequestV2 - a model defined in Swagger"""  # noqa: E501
 
         self._end = None
@@ -78,12 +76,11 @@ class GrpcTimeSeriesRequestV2(object):
         self._source_grouping = None
         self._destination_grouping = None
         self._directionality = None
-        self._locality = None
         self._top_k = None
-        self._min_total_values_threshold = None
         self._no_rollups = None
         self._label_equality = None
         self._aggregation = None
+        self._no_zero_padding = None
         self.discriminator = None
 
         if end is not None:
@@ -104,24 +101,22 @@ class GrpcTimeSeriesRequestV2(object):
             self.destination_grouping = destination_grouping
         if directionality is not None:
             self.directionality = directionality
-        if locality is not None:
-            self.locality = locality
         if top_k is not None:
             self.top_k = top_k
-        if min_total_values_threshold is not None:
-            self.min_total_values_threshold = min_total_values_threshold
         if no_rollups is not None:
             self.no_rollups = no_rollups
         if label_equality is not None:
             self.label_equality = label_equality
         if aggregation is not None:
             self.aggregation = aggregation
+        if no_zero_padding is not None:
+            self.no_zero_padding = no_zero_padding
 
     @property
     def end(self):
         """Gets the end of this GrpcTimeSeriesRequestV2.  # noqa: E501
 
-        We specify query time ranges with a tuple of (end, duration, num_steps).  From these values, we compute:    - step_sec = duration / num_steps    - start = end - (step_sec * num_steps)  The returned timeseries will contain points between start and end that are evenly spaced at step_sec. More precisely, points[i] will correspond to the range: ((start + (step_sec * i)), (start + step_sec * (i + 1)].  We enforce the following constraints on all queries:    - end is expected to be in the UTC timezone    - end must be at or before the current time    - duration must be less than some MAX_QUERY_DURATION, currently 2 days    - duration must be an integral number of seconds    - duration / num_steps must result in an integral number of samples [1]    - duration / num_steps must be less than some MAX_NUM_SAMPLES    - num_steps must be less than MAX_NUM_POINTS (about 1000)  [1] We currently store data at 1sec, 30sec, and 600sec samples. So, when we derive step = duration / num_steps, we enfore that step is either:    - integral if < 30s as we read from the 1sec data, or    - a multiple of 30s if > 30s and < 600s as we read from the 30sec data,    - a multiple of 600s if > 600s as we read from the 600sec data.  Queries that violate any of these constraints will result in an INVALID_ARGUMENT error.  # noqa: E501
+        We specify query time ranges with a tuple of (end, duration, num_steps).  From these values, we compute:    - step_sec = duration / num_steps    - start = end - (step_sec * num_steps)  The returned timeseries will contain points between start and end that are evenly spaced at step_sec. More precisely, points[i] will correspond to the range: ((start + (step_sec * i)), (start + step_sec * (i + 1)].  We enforce the following constraints on all queries:    - end is expected to be in the UTC timezone    - end must be at or before the current time    - duration must be less than some MAX_QUERY_DURATION, currently 2 days    - duration must be an integral number of seconds    - duration / num_steps must result in an integral number of samples    [1]    - duration / num_steps must be less than some MAX_NUM_SAMPLES    - num_steps must be less than MAX_NUM_POINTS (about 1000)  [1] We currently store data at 5sec, 30sec, and 600sec samples. So, when we derive step = duration / num_steps, we enfore that step is either:    - a multiple of 5s if < 30s as we read from the 5sec data, or    - a multiple of 30s if > 30s and < 600s as we read from the 30sec    data,    - a multiple of 600s if > 600s as we read from the 600sec data.  Queries that violate any of these constraints will result in an INVALID_ARGUMENT error.  # noqa: E501
 
         :return: The end of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :rtype: datetime
@@ -132,7 +127,7 @@ class GrpcTimeSeriesRequestV2(object):
     def end(self, end):
         """Sets the end of this GrpcTimeSeriesRequestV2.
 
-        We specify query time ranges with a tuple of (end, duration, num_steps).  From these values, we compute:    - step_sec = duration / num_steps    - start = end - (step_sec * num_steps)  The returned timeseries will contain points between start and end that are evenly spaced at step_sec. More precisely, points[i] will correspond to the range: ((start + (step_sec * i)), (start + step_sec * (i + 1)].  We enforce the following constraints on all queries:    - end is expected to be in the UTC timezone    - end must be at or before the current time    - duration must be less than some MAX_QUERY_DURATION, currently 2 days    - duration must be an integral number of seconds    - duration / num_steps must result in an integral number of samples [1]    - duration / num_steps must be less than some MAX_NUM_SAMPLES    - num_steps must be less than MAX_NUM_POINTS (about 1000)  [1] We currently store data at 1sec, 30sec, and 600sec samples. So, when we derive step = duration / num_steps, we enfore that step is either:    - integral if < 30s as we read from the 1sec data, or    - a multiple of 30s if > 30s and < 600s as we read from the 30sec data,    - a multiple of 600s if > 600s as we read from the 600sec data.  Queries that violate any of these constraints will result in an INVALID_ARGUMENT error.  # noqa: E501
+        We specify query time ranges with a tuple of (end, duration, num_steps).  From these values, we compute:    - step_sec = duration / num_steps    - start = end - (step_sec * num_steps)  The returned timeseries will contain points between start and end that are evenly spaced at step_sec. More precisely, points[i] will correspond to the range: ((start + (step_sec * i)), (start + step_sec * (i + 1)].  We enforce the following constraints on all queries:    - end is expected to be in the UTC timezone    - end must be at or before the current time    - duration must be less than some MAX_QUERY_DURATION, currently 2 days    - duration must be an integral number of seconds    - duration / num_steps must result in an integral number of samples    [1]    - duration / num_steps must be less than some MAX_NUM_SAMPLES    - num_steps must be less than MAX_NUM_POINTS (about 1000)  [1] We currently store data at 5sec, 30sec, and 600sec samples. So, when we derive step = duration / num_steps, we enfore that step is either:    - a multiple of 5s if < 30s as we read from the 5sec data, or    - a multiple of 30s if > 30s and < 600s as we read from the 30sec    data,    - a multiple of 600s if > 600s as we read from the 600sec data.  Queries that violate any of these constraints will result in an INVALID_ARGUMENT error.  # noqa: E501
 
         :param end: The end of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :type: datetime
@@ -230,7 +225,7 @@ class GrpcTimeSeriesRequestV2(object):
     def metric(self):
         """Gets the metric of this GrpcTimeSeriesRequestV2.  # noqa: E501
 
-        Metric to return as timeseries.  If requesting a percent metric (such as drops), then the results are filtered to a min number of 200 drops per second as described in: timeseries/timeseries.go:getDropsCorrectedTimeSeries  # noqa: E501
+        Metric to return as timeseries.  We return metrics as durations, percents, or rates. A good rule of thumb for how to interpret metric values is: - metrics suffixed with _latency are in seconds, - metrics suffixed with _percent are percents of totals, and - all other metrics are rates, such as \"bytes per second\" or   \"udp_packets per second\" or \"http_code_200 per second.\"  # noqa: E501
 
         :return: The metric of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :rtype: str
@@ -241,7 +236,7 @@ class GrpcTimeSeriesRequestV2(object):
     def metric(self, metric):
         """Sets the metric of this GrpcTimeSeriesRequestV2.
 
-        Metric to return as timeseries.  If requesting a percent metric (such as drops), then the results are filtered to a min number of 200 drops per second as described in: timeseries/timeseries.go:getDropsCorrectedTimeSeries  # noqa: E501
+        Metric to return as timeseries.  We return metrics as durations, percents, or rates. A good rule of thumb for how to interpret metric values is: - metrics suffixed with _latency are in seconds, - metrics suffixed with _percent are percents of totals, and - all other metrics are rates, such as \"bytes per second\" or   \"udp_packets per second\" or \"http_code_200 per second.\"  # noqa: E501
 
         :param metric: The metric of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :type: str
@@ -253,7 +248,7 @@ class GrpcTimeSeriesRequestV2(object):
     def source_grouping(self):
         """Gets the source_grouping of this GrpcTimeSeriesRequestV2.  # noqa: E501
 
-        A list of labels that the returned timeseries will include.  If only one side of the groupings are specified, then the returned timeseries will be aggregated for that one side. E.g., if we specify a query for source_grouping = ['address'], then the returned timeseries will be the sum of the specified metric aggregated by source address. If no grouping is specified, no cross-timeseries aggregation is performed.  Note: The response's `series.source_labels` and `series.destination_labels` will contain `source_grouping` and `destination_grouping`, for both FORWARD and REVERSED responses, i.e., reversed timeseries don't reverse the source and destination grouping labels.  # noqa: E501
+        A list of labels that the returned timeseries will include.  Queries must specify at least one grouping on either the source or destination side.  If only one side of the groupings are specified, then the returned timeseries will be aggregated for that one side, e.g., if we specify a query for source_grouping = ['id'], then the returned timeseries will be the sum of the specified metric aggregated by source address.  Note: The response's `series.source_labels` and `series.destination_labels` will contain `source_grouping` and `destination_grouping`, for both FORWARD and REVERSED responses, i.e., reversed timeseries don't reverse the source and destination grouping labels.  # noqa: E501
 
         :return: The source_grouping of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :rtype: list[str]
@@ -264,7 +259,7 @@ class GrpcTimeSeriesRequestV2(object):
     def source_grouping(self, source_grouping):
         """Sets the source_grouping of this GrpcTimeSeriesRequestV2.
 
-        A list of labels that the returned timeseries will include.  If only one side of the groupings are specified, then the returned timeseries will be aggregated for that one side. E.g., if we specify a query for source_grouping = ['address'], then the returned timeseries will be the sum of the specified metric aggregated by source address. If no grouping is specified, no cross-timeseries aggregation is performed.  Note: The response's `series.source_labels` and `series.destination_labels` will contain `source_grouping` and `destination_grouping`, for both FORWARD and REVERSED responses, i.e., reversed timeseries don't reverse the source and destination grouping labels.  # noqa: E501
+        A list of labels that the returned timeseries will include.  Queries must specify at least one grouping on either the source or destination side.  If only one side of the groupings are specified, then the returned timeseries will be aggregated for that one side, e.g., if we specify a query for source_grouping = ['id'], then the returned timeseries will be the sum of the specified metric aggregated by source address.  Note: The response's `series.source_labels` and `series.destination_labels` will contain `source_grouping` and `destination_grouping`, for both FORWARD and REVERSED responses, i.e., reversed timeseries don't reverse the source and destination grouping labels.  # noqa: E501
 
         :param source_grouping: The source_grouping of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :type: list[str]
@@ -317,29 +312,6 @@ class GrpcTimeSeriesRequestV2(object):
         self._directionality = directionality
 
     @property
-    def locality(self):
-        """Gets the locality of this GrpcTimeSeriesRequestV2.  # noqa: E501
-
-        / XXX(ekerzner) - Unclear what this is supposed to do. It likely doesn't / work. Will remove it before releasing v2 of this API.  # noqa: E501
-
-        :return: The locality of this GrpcTimeSeriesRequestV2.  # noqa: E501
-        :rtype: GrpcLocality
-        """
-        return self._locality
-
-    @locality.setter
-    def locality(self, locality):
-        """Sets the locality of this GrpcTimeSeriesRequestV2.
-
-        / XXX(ekerzner) - Unclear what this is supposed to do. It likely doesn't / work. Will remove it before releasing v2 of this API.  # noqa: E501
-
-        :param locality: The locality of this GrpcTimeSeriesRequestV2.  # noqa: E501
-        :type: GrpcLocality
-        """
-
-        self._locality = locality
-
-    @property
     def top_k(self):
         """Gets the top_k of this GrpcTimeSeriesRequestV2.  # noqa: E501
 
@@ -363,33 +335,10 @@ class GrpcTimeSeriesRequestV2(object):
         self._top_k = top_k
 
     @property
-    def min_total_values_threshold(self):
-        """Gets the min_total_values_threshold of this GrpcTimeSeriesRequestV2.  # noqa: E501
-
-        Threshold for corrected percent metrics: drops and *_percent.  For each point in the requested timeseries, if the rate of that point extrapolated into the entire time window is less than the specified threshold, then that point will be corrected to 0.  This is necessary for filtering outliers from connections that have sporadic patterns. For example, in one time step, a single packet dropped could mean a 20% drop rate. So, we use this threshold to filter such low traffic time steps.  XXX(ekerzner) - remove this before releasing v2 of this API. it never really worked right because it was inconsistent as we changed the requested step size.  Defaults to 0 (no filtering).  # noqa: E501
-
-        :return: The min_total_values_threshold of this GrpcTimeSeriesRequestV2.  # noqa: E501
-        :rtype: float
-        """
-        return self._min_total_values_threshold
-
-    @min_total_values_threshold.setter
-    def min_total_values_threshold(self, min_total_values_threshold):
-        """Sets the min_total_values_threshold of this GrpcTimeSeriesRequestV2.
-
-        Threshold for corrected percent metrics: drops and *_percent.  For each point in the requested timeseries, if the rate of that point extrapolated into the entire time window is less than the specified threshold, then that point will be corrected to 0.  This is necessary for filtering outliers from connections that have sporadic patterns. For example, in one time step, a single packet dropped could mean a 20% drop rate. So, we use this threshold to filter such low traffic time steps.  XXX(ekerzner) - remove this before releasing v2 of this API. it never really worked right because it was inconsistent as we changed the requested step size.  Defaults to 0 (no filtering).  # noqa: E501
-
-        :param min_total_values_threshold: The min_total_values_threshold of this GrpcTimeSeriesRequestV2.  # noqa: E501
-        :type: float
-        """
-
-        self._min_total_values_threshold = min_total_values_threshold
-
-    @property
     def no_rollups(self):
         """Gets the no_rollups of this GrpcTimeSeriesRequestV2.  # noqa: E501
 
-        Flag to manually disable the use of time-aggregated data.  Our default TSDB stores samples at 1sec resoltuion. Our \"rolled up\" TSDB stores data at 30sec resolution.  XXX(ekerzner) - This service was supposed to dynamically switch between 1s/30s data. But, it's unclear if this works or when it's enabled/disabled. We need to straighten this out before releasing v2 of the API.  # noqa: E501
+        Flag to manually disable the use of time-aggregated data.  Our default TSDB stores samples at 1sec resoltuion. Our \"rolled up\" TSDB stores data at 30s or 600s resolution.  # noqa: E501
 
         :return: The no_rollups of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :rtype: bool
@@ -400,7 +349,7 @@ class GrpcTimeSeriesRequestV2(object):
     def no_rollups(self, no_rollups):
         """Sets the no_rollups of this GrpcTimeSeriesRequestV2.
 
-        Flag to manually disable the use of time-aggregated data.  Our default TSDB stores samples at 1sec resoltuion. Our \"rolled up\" TSDB stores data at 30sec resolution.  XXX(ekerzner) - This service was supposed to dynamically switch between 1s/30s data. But, it's unclear if this works or when it's enabled/disabled. We need to straighten this out before releasing v2 of the API.  # noqa: E501
+        Flag to manually disable the use of time-aggregated data.  Our default TSDB stores samples at 1sec resoltuion. Our \"rolled up\" TSDB stores data at 30s or 600s resolution.  # noqa: E501
 
         :param no_rollups: The no_rollups of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :type: bool
@@ -435,7 +384,7 @@ class GrpcTimeSeriesRequestV2(object):
     def aggregation(self):
         """Gets the aggregation of this GrpcTimeSeriesRequestV2.  # noqa: E501
 
-        Describes how timeseries samples should be aggregated both over time and over groupings. The two options are: sum and mean.  We currently allow only one aggregation method for each metric. See: https://github.com/Flowmill/flowmill/blob/master/backend/timeseries_query/create_query.go#L183  XXX(ekerzner) - A consumer of our API doesn't care about the aggregation because they have no control over it. i.e., we require that they specify it, but there's only 1 valid aggregation method for each metric. We should remove this before releasing v2.  # noqa: E501
+        This is deprecated because we only allow one aggregation method for each metric, so there's no way for the client to provide any useful information through this field. It will be removed in subsequent API releases.  # noqa: E501
 
         :return: The aggregation of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :rtype: GrpcAggregationMethod
@@ -446,13 +395,36 @@ class GrpcTimeSeriesRequestV2(object):
     def aggregation(self, aggregation):
         """Sets the aggregation of this GrpcTimeSeriesRequestV2.
 
-        Describes how timeseries samples should be aggregated both over time and over groupings. The two options are: sum and mean.  We currently allow only one aggregation method for each metric. See: https://github.com/Flowmill/flowmill/blob/master/backend/timeseries_query/create_query.go#L183  XXX(ekerzner) - A consumer of our API doesn't care about the aggregation because they have no control over it. i.e., we require that they specify it, but there's only 1 valid aggregation method for each metric. We should remove this before releasing v2.  # noqa: E501
+        This is deprecated because we only allow one aggregation method for each metric, so there's no way for the client to provide any useful information through this field. It will be removed in subsequent API releases.  # noqa: E501
 
         :param aggregation: The aggregation of this GrpcTimeSeriesRequestV2.  # noqa: E501
         :type: GrpcAggregationMethod
         """
 
         self._aggregation = aggregation
+
+    @property
+    def no_zero_padding(self):
+        """Gets the no_zero_padding of this GrpcTimeSeriesRequestV2.  # noqa: E501
+
+        Controls how we compute latency timeseries values when there are no samples in a given time range.  If true, then the value of latencies in time ranges with no samples will be marked with a -1.  Otherwise, latency timeseries will be filled with 0s when we have no samples. This is the default behavior to ensure backward compatability.  Beware: the default behavior makes it impossible to differentiate between \"0 measurements\" and \"measured 0.\"  This applies only to latency metrics because we use \"no samples\" to mean 0 for for all other metrics, such as rates and percents.  # noqa: E501
+
+        :return: The no_zero_padding of this GrpcTimeSeriesRequestV2.  # noqa: E501
+        :rtype: bool
+        """
+        return self._no_zero_padding
+
+    @no_zero_padding.setter
+    def no_zero_padding(self, no_zero_padding):
+        """Sets the no_zero_padding of this GrpcTimeSeriesRequestV2.
+
+        Controls how we compute latency timeseries values when there are no samples in a given time range.  If true, then the value of latencies in time ranges with no samples will be marked with a -1.  Otherwise, latency timeseries will be filled with 0s when we have no samples. This is the default behavior to ensure backward compatability.  Beware: the default behavior makes it impossible to differentiate between \"0 measurements\" and \"measured 0.\"  This applies only to latency metrics because we use \"no samples\" to mean 0 for for all other metrics, such as rates and percents.  # noqa: E501
+
+        :param no_zero_padding: The no_zero_padding of this GrpcTimeSeriesRequestV2.  # noqa: E501
+        :type: bool
+        """
+
+        self._no_zero_padding = no_zero_padding
 
     def to_dict(self):
         """Returns the model properties as a dict"""

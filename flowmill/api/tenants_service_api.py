@@ -34,7 +34,7 @@ class TenantsServiceApi(object):
         self.api_client = api_client
 
     def create_agent_key(self, body, **kwargs):  # noqa: E501
-        """create_agent_key  # noqa: E501
+        """Add new agent key to the db. returns a \"permission denied\" error if user not authorized to create an agent key  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -55,7 +55,7 @@ class TenantsServiceApi(object):
             return data
 
     def create_agent_key_with_http_info(self, body, **kwargs):  # noqa: E501
-        """create_agent_key  # noqa: E501
+        """Add new agent key to the db. returns a \"permission denied\" error if user not authorized to create an agent key  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -115,7 +115,7 @@ class TenantsServiceApi(object):
         auth_settings = ['bearer']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/keys/agent_keys', 'POST',
+            '/api/v1/keys/agent-keys', 'POST',
             path_params,
             query_params,
             header_params,
@@ -131,7 +131,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def create_api_key(self, body, **kwargs):  # noqa: E501
-        """create_api_key  # noqa: E501
+        """Add new api key to the db. returns a \"permission denied\" error if user not authorized to create an api key  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -152,7 +152,7 @@ class TenantsServiceApi(object):
             return data
 
     def create_api_key_with_http_info(self, body, **kwargs):  # noqa: E501
-        """create_api_key  # noqa: E501
+        """Add new api key to the db. returns a \"permission denied\" error if user not authorized to create an api key  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -212,7 +212,7 @@ class TenantsServiceApi(object):
         auth_settings = ['bearer']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/keys/api_keys', 'POST',
+            '/api/v1/keys/api-keys', 'POST',
             path_params,
             query_params,
             header_params,
@@ -228,7 +228,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def create_tenant(self, body, **kwargs):  # noqa: E501
-        """create_tenant  # noqa: E501
+        """Create new tenant. This will send welcome email to a specified admin email address.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -249,7 +249,7 @@ class TenantsServiceApi(object):
             return data
 
     def create_tenant_with_http_info(self, body, **kwargs):  # noqa: E501
-        """create_tenant  # noqa: E501
+        """Create new tenant. This will send welcome email to a specified admin email address.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -325,7 +325,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def create_user(self, body, **kwargs):  # noqa: E501
-        """create_user  # noqa: E501
+        """Create a user with specific tenant and role and send them welcome email. Only \"admin\" role allowed to create a user and will be verified. Receive: email, role Return: \"permission denied\" if not allowed to create new user.         \"already exists\" if user already exists for this tenant.         \"internal\" on fail         user_id if successful  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -346,7 +346,7 @@ class TenantsServiceApi(object):
             return data
 
     def create_user_with_http_info(self, body, **kwargs):  # noqa: E501
-        """create_user  # noqa: E501
+        """Create a user with specific tenant and role and send them welcome email. Only \"admin\" role allowed to create a user and will be verified. Receive: email, role Return: \"permission denied\" if not allowed to create new user.         \"already exists\" if user already exists for this tenant.         \"internal\" on fail         user_id if successful  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -422,7 +422,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def delete_agent_key(self, key_id, **kwargs):  # noqa: E501
-        """delete_agent_key  # noqa: E501
+        """Delete an agent key given a specified key_id. returns a \"permission denied\" error if user not authorized to delete an agent key returns \"Not Found\" error if no such key id exists.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -443,7 +443,7 @@ class TenantsServiceApi(object):
             return data
 
     def delete_agent_key_with_http_info(self, key_id, **kwargs):  # noqa: E501
-        """delete_agent_key  # noqa: E501
+        """Delete an agent key given a specified key_id. returns a \"permission denied\" error if user not authorized to delete an agent key returns \"Not Found\" error if no such key id exists.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -503,7 +503,7 @@ class TenantsServiceApi(object):
         auth_settings = ['bearer']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/keys/agent_keys/{keyId}', 'DELETE',
+            '/api/v1/keys/agent-keys/{keyId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -519,7 +519,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def delete_api_key(self, key_id, **kwargs):  # noqa: E501
-        """delete_api_key  # noqa: E501
+        """Delete an api key given a specified key_id. returns a \"permission denied\" error if user not authorized to delete an api key returns \"Not Found\" error if no such key id exists.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -540,7 +540,7 @@ class TenantsServiceApi(object):
             return data
 
     def delete_api_key_with_http_info(self, key_id, **kwargs):  # noqa: E501
-        """delete_api_key  # noqa: E501
+        """Delete an api key given a specified key_id. returns a \"permission denied\" error if user not authorized to delete an api key returns \"Not Found\" error if no such key id exists.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -600,7 +600,7 @@ class TenantsServiceApi(object):
         auth_settings = ['bearer']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/keys/api_keys/{keyId}', 'DELETE',
+            '/api/v1/keys/api-keys/{keyId}', 'DELETE',
             path_params,
             query_params,
             header_params,
@@ -818,7 +818,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def list_agent_keys(self, **kwargs):  # noqa: E501
-        """list_agent_keys  # noqa: E501
+        """List all agent keys for a specific tenant. returns a \"permission denied\" error if user not authorized to ask for a list of agent keys, or an empty list if no keys exist.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -838,7 +838,7 @@ class TenantsServiceApi(object):
             return data
 
     def list_agent_keys_with_http_info(self, **kwargs):  # noqa: E501
-        """list_agent_keys  # noqa: E501
+        """List all agent keys for a specific tenant. returns a \"permission denied\" error if user not authorized to ask for a list of agent keys, or an empty list if no keys exist.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -891,7 +891,7 @@ class TenantsServiceApi(object):
         auth_settings = ['bearer']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/keys/agent_keys', 'GET',
+            '/api/v1/keys/agent-keys', 'GET',
             path_params,
             query_params,
             header_params,
@@ -907,7 +907,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def list_api_keys(self, **kwargs):  # noqa: E501
-        """list_api_keys  # noqa: E501
+        """List all keys for a specific user and tenant. returns a \"permission denied\" error if user not authorized to ask for a list of api keys, or an empty list if no keys exist.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -927,7 +927,7 @@ class TenantsServiceApi(object):
             return data
 
     def list_api_keys_with_http_info(self, **kwargs):  # noqa: E501
-        """list_api_keys  # noqa: E501
+        """List all keys for a specific user and tenant. returns a \"permission denied\" error if user not authorized to ask for a list of api keys, or an empty list if no keys exist.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -980,7 +980,7 @@ class TenantsServiceApi(object):
         auth_settings = ['bearer']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/keys/api_keys', 'GET',
+            '/api/v1/keys/api-keys', 'GET',
             path_params,
             query_params,
             header_params,
@@ -996,7 +996,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def list_tenants(self, **kwargs):  # noqa: E501
-        """list_tenants  # noqa: E501
+        """Tenants  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1016,7 +1016,7 @@ class TenantsServiceApi(object):
             return data
 
     def list_tenants_with_http_info(self, **kwargs):  # noqa: E501
-        """list_tenants  # noqa: E501
+        """Tenants  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1085,7 +1085,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def list_users(self, **kwargs):  # noqa: E501
-        """list_users  # noqa: E501
+        """List of users, roles and status enabled/disabled Receive: empty message Return: \"permission denied\" on unauthorized/disabled user.         list of users for that same tenant, if successful  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1105,7 +1105,7 @@ class TenantsServiceApi(object):
             return data
 
     def list_users_with_http_info(self, **kwargs):  # noqa: E501
-        """list_users  # noqa: E501
+        """List of users, roles and status enabled/disabled Receive: empty message Return: \"permission denied\" on unauthorized/disabled user.         list of users for that same tenant, if successful  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1279,7 +1279,7 @@ class TenantsServiceApi(object):
             collection_formats=collection_formats)
 
     def update_user(self, user_id, body, **kwargs):  # noqa: E501
-        """update_user  # noqa: E501
+        """Change user's permissions from USER to ADMIN or from \"enabled\" to \"disabled\" and vice versa. Admins cannot change their own role or status. Role must be 'user' or 'admin, status musr be 'enabled' or 'disabled' Receive: user_id, role, status Return: \"permission denied\" if not allowed to make a change.         \"internal error\" if attempts to change \"flowmill\" role of if         transaction failed. \"invalid argument\" if an invalid role or status         has been used.          empty message if successful  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -1301,7 +1301,7 @@ class TenantsServiceApi(object):
             return data
 
     def update_user_with_http_info(self, user_id, body, **kwargs):  # noqa: E501
-        """update_user  # noqa: E501
+        """Change user's permissions from USER to ADMIN or from \"enabled\" to \"disabled\" and vice versa. Admins cannot change their own role or status. Role must be 'user' or 'admin, status musr be 'enabled' or 'disabled' Receive: user_id, role, status Return: \"permission denied\" if not allowed to make a change.         \"internal error\" if attempts to change \"flowmill\" role of if         transaction failed. \"invalid argument\" if an invalid role or status         has been used.          empty message if successful  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

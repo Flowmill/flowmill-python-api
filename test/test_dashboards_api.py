@@ -62,6 +62,7 @@ class TestDashboardsApi(unittest.TestCase):
     def test_post_favorite(self):
         """Test case for post_favorite
 
+        Mark favorite  # noqa: E501
         """
         pass
 

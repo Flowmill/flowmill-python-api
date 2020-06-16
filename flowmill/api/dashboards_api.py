@@ -547,7 +547,7 @@ class DashboardsApi(object):
             collection_formats=collection_formats)
 
     def post_favorite(self, id, **kwargs):  # noqa: E501
-        """post_favorite  # noqa: E501
+        """Mark favorite  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -568,7 +568,7 @@ class DashboardsApi(object):
             return data
 
     def post_favorite_with_http_info(self, id, **kwargs):  # noqa: E501
-        """post_favorite  # noqa: E501
+        """Mark favorite  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

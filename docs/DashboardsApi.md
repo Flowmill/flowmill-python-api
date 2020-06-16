@@ -9,7 +9,7 @@ Method | HTTP request | Description
 [**get_dashboard**](DashboardsApi.md#get_dashboard) | **GET** /api/v1/dashboards | 
 [**get_dashboard2**](DashboardsApi.md#get_dashboard2) | **GET** /api/v1/dashboards/{id} | 
 [**post_dashboard**](DashboardsApi.md#post_dashboard) | **POST** /api/v1/dashboards | 
-[**post_favorite**](DashboardsApi.md#post_favorite) | **POST** /api/v1/dashboards/{id}/favorite | 
+[**post_favorite**](DashboardsApi.md#post_favorite) | **POST** /api/v1/dashboards/{id}/favorite | Mark favorite
 [**put_dashboard**](DashboardsApi.md#put_dashboard) | **PUT** /api/v1/dashboards/{id} | 
 
 
@@ -287,7 +287,7 @@ Name | Type | Description  | Notes
 # **post_favorite**
 > GrpcPostFavoriteResponse post_favorite(id)
 
-
+Mark favorite
 
 ### Example
 ```python
@@ -308,6 +308,7 @@ api_instance = flowmill.DashboardsApi(flowmill.ApiClient(configuration))
 id = 'id_example' # str | 
 
 try:
+    # Mark favorite
     api_response = api_instance.post_favorite(id)
     pprint(api_response)
 except ApiException as e:

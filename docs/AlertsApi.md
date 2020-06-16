@@ -4,16 +4,16 @@ All URIs are relative to *https://app.flowmill.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_alert**](AlertsApi.md#get_alert) | **GET** /api/v1/alerts/{id} | 
-[**post_alerts**](AlertsApi.md#post_alerts) | **POST** /api/v1/alerts | 
-[**read_alerts**](AlertsApi.md#read_alerts) | **GET** /api/v1/alerts | 
-[**update_alert_status**](AlertsApi.md#update_alert_status) | **POST** /api/v1/alerts/{id} | 
+[**get_alert**](AlertsApi.md#get_alert) | **GET** /api/v1/alerts/{id} | Get alert with specific id
+[**post_alerts**](AlertsApi.md#post_alerts) | **POST** /api/v1/alerts | Post an alert to our alert-access write endpoint
+[**read_alerts**](AlertsApi.md#read_alerts) | **GET** /api/v1/alerts | Make a request to our alerts database
+[**update_alert_status**](AlertsApi.md#update_alert_status) | **POST** /api/v1/alerts/{id} | Updates the Status of alerts
 
 
 # **get_alert**
 > GrpcAlertsList get_alert(id)
 
-
+Get alert with specific id
 
 ### Example
 ```python
@@ -34,6 +34,7 @@ api_instance = flowmill.AlertsApi(flowmill.ApiClient(configuration))
 id = 'id_example' # str | 
 
 try:
+    # Get alert with specific id
     api_response = api_instance.get_alert(id)
     pprint(api_response)
 except ApiException as e:
@@ -64,7 +65,7 @@ Name | Type | Description  | Notes
 # **post_alerts**
 > GrpcPostAlertsResponse post_alerts(body)
 
-
+Post an alert to our alert-access write endpoint
 
 ### Example
 ```python
@@ -85,6 +86,7 @@ api_instance = flowmill.AlertsApi(flowmill.ApiClient(configuration))
 body = flowmill.GrpcAlertsList() # GrpcAlertsList | 
 
 try:
+    # Post an alert to our alert-access write endpoint
     api_response = api_instance.post_alerts(body)
     pprint(api_response)
 except ApiException as e:
@@ -115,7 +117,7 @@ Name | Type | Description  | Notes
 # **read_alerts**
 > GrpcPagedAlertsList read_alerts(_from=_from, to=to, filters=filters, limit=limit, offset=offset, sort_by=sort_by, sort_direction=sort_direction, search=search)
 
-
+Make a request to our alerts database
 
 ### Example
 ```python
@@ -143,6 +145,7 @@ sort_direction = 'ASCENDING' # str | Ascending or descending sort. (optional) (d
 search = 'search_example' # str | Search for an alert that contains the provided string. (optional)
 
 try:
+    # Make a request to our alerts database
     api_response = api_instance.read_alerts(_from=_from, to=to, filters=filters, limit=limit, offset=offset, sort_by=sort_by, sort_direction=sort_direction, search=search)
     pprint(api_response)
 except ApiException as e:
@@ -180,7 +183,7 @@ Name | Type | Description  | Notes
 # **update_alert_status**
 > object update_alert_status(id, body)
 
-
+Updates the Status of alerts
 
 ### Example
 ```python
@@ -202,6 +205,7 @@ id = 'id_example' # str |
 body = flowmill.GrpcUpdateAlertStatusRequest() # GrpcUpdateAlertStatusRequest | 
 
 try:
+    # Updates the Status of alerts
     api_response = api_instance.update_alert_status(id, body)
     pprint(api_response)
 except ApiException as e:
