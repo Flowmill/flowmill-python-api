@@ -32,25 +32,30 @@ class GetAgentInfoResponseAgentInstance(object):
     """
     swagger_types = {
         'instance_ip': 'str',
-        'version': 'str'
+        'version': 'str',
+        'type': 'str'
     }
 
     attribute_map = {
         'instance_ip': 'instanceIp',
-        'version': 'version'
+        'version': 'version',
+        'type': 'type'
     }
 
-    def __init__(self, instance_ip=None, version=None):  # noqa: E501
+    def __init__(self, instance_ip=None, version=None, type=None):  # noqa: E501
         """GetAgentInfoResponseAgentInstance - a model defined in Swagger"""  # noqa: E501
 
         self._instance_ip = None
         self._version = None
+        self._type = None
         self.discriminator = None
 
         if instance_ip is not None:
             self.instance_ip = instance_ip
         if version is not None:
             self.version = version
+        if type is not None:
+            self.type = type
 
     @property
     def instance_ip(self):
@@ -93,6 +98,29 @@ class GetAgentInfoResponseAgentInstance(object):
         """
 
         self._version = version
+
+    @property
+    def type(self):
+        """Gets the type of this GetAgentInfoResponseAgentInstance.  # noqa: E501
+
+        type of agent. Possible values include kernel, k8s, or aws.  # noqa: E501
+
+        :return: The type of this GetAgentInfoResponseAgentInstance.  # noqa: E501
+        :rtype: str
+        """
+        return self._type
+
+    @type.setter
+    def type(self, type):
+        """Sets the type of this GetAgentInfoResponseAgentInstance.
+
+        type of agent. Possible values include kernel, k8s, or aws.  # noqa: E501
+
+        :param type: The type of this GetAgentInfoResponseAgentInstance.  # noqa: E501
+        :type: str
+        """
+
+        self._type = type
 
     def to_dict(self):
         """Returns the model properties as a dict"""

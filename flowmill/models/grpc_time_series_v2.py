@@ -35,7 +35,9 @@ class GrpcTimeSeriesV2(object):
         'destination_labels': 'list[GrpcLabel]',
         'directionality': 'GrpcDirectionality',
         'max_value': 'float',
-        'values': 'list[float]'
+        'values': 'list[float]',
+        'ok_values': 'list[float]',
+        'bad_values': 'list[float]'
     }
 
     attribute_map = {
@@ -43,10 +45,12 @@ class GrpcTimeSeriesV2(object):
         'destination_labels': 'destinationLabels',
         'directionality': 'directionality',
         'max_value': 'maxValue',
-        'values': 'values'
+        'values': 'values',
+        'ok_values': 'okValues',
+        'bad_values': 'badValues'
     }
 
-    def __init__(self, source_labels=None, destination_labels=None, directionality=None, max_value=None, values=None):  # noqa: E501
+    def __init__(self, source_labels=None, destination_labels=None, directionality=None, max_value=None, values=None, ok_values=None, bad_values=None):  # noqa: E501
         """GrpcTimeSeriesV2 - a model defined in Swagger"""  # noqa: E501
 
         self._source_labels = None
@@ -54,6 +58,8 @@ class GrpcTimeSeriesV2(object):
         self._directionality = None
         self._max_value = None
         self._values = None
+        self._ok_values = None
+        self._bad_values = None
         self.discriminator = None
 
         if source_labels is not None:
@@ -66,6 +72,10 @@ class GrpcTimeSeriesV2(object):
             self.max_value = max_value
         if values is not None:
             self.values = values
+        if ok_values is not None:
+            self.ok_values = ok_values
+        if bad_values is not None:
+            self.bad_values = bad_values
 
     @property
     def source_labels(self):
@@ -161,7 +171,7 @@ class GrpcTimeSeriesV2(object):
     def values(self):
         """Gets the values of this GrpcTimeSeriesV2.  # noqa: E501
 
-        List of points for this timeseries.  The points in values correspond to TSDB samples in the range such that: values[i] is for the range (start, start + (step * i)].  See GetTimeSeriesRequestV2 for a more complete description of how values map to time ranges.  # noqa: E501
+        List of points for this timeseries.  The points in values correspond to TSDB samples aggregated over time ranges:    - values[0] is the range (start, start + (step)]    - values[1] is the range (start + step, start + (step * 2)]    - values[2] is the range (start + (step * 2), start + (step * 3)]      ...    - values[i] is the range (start + (step * i), start + (step * (i +    1))]  If there are no TSDB samples for a given step in (start, end], we will fill that step with a value using the requested no_zero_padding (see GetTimeSeriesV2 request above).  # noqa: E501
 
         :return: The values of this GrpcTimeSeriesV2.  # noqa: E501
         :rtype: list[float]
@@ -172,13 +182,57 @@ class GrpcTimeSeriesV2(object):
     def values(self, values):
         """Sets the values of this GrpcTimeSeriesV2.
 
-        List of points for this timeseries.  The points in values correspond to TSDB samples in the range such that: values[i] is for the range (start, start + (step * i)].  See GetTimeSeriesRequestV2 for a more complete description of how values map to time ranges.  # noqa: E501
+        List of points for this timeseries.  The points in values correspond to TSDB samples aggregated over time ranges:    - values[0] is the range (start, start + (step)]    - values[1] is the range (start + step, start + (step * 2)]    - values[2] is the range (start + (step * 2), start + (step * 3)]      ...    - values[i] is the range (start + (step * i), start + (step * (i +    1))]  If there are no TSDB samples for a given step in (start, end], we will fill that step with a value using the requested no_zero_padding (see GetTimeSeriesV2 request above).  # noqa: E501
 
         :param values: The values of this GrpcTimeSeriesV2.  # noqa: E501
         :type: list[float]
         """
 
         self._values = values
+
+    @property
+    def ok_values(self):
+        """Gets the ok_values of this GrpcTimeSeriesV2.  # noqa: E501
+
+        When returning percent metrics, we also include the values used to compute the percent. These will be undefined for non-percent metrics.  Except for 'drops', all of the percent metrics have a suffix '_percent'.  Examples:  - for the metric 'drops' the ok_values will be 'tcp_packets' and    bad_values will be 'tcp_retrans'  - for the metric 'connection_errors_percent' the ok_values will be    'new_sockets' and the bad_values will be 'syn_timeouts'  # noqa: E501
+
+        :return: The ok_values of this GrpcTimeSeriesV2.  # noqa: E501
+        :rtype: list[float]
+        """
+        return self._ok_values
+
+    @ok_values.setter
+    def ok_values(self, ok_values):
+        """Sets the ok_values of this GrpcTimeSeriesV2.
+
+        When returning percent metrics, we also include the values used to compute the percent. These will be undefined for non-percent metrics.  Except for 'drops', all of the percent metrics have a suffix '_percent'.  Examples:  - for the metric 'drops' the ok_values will be 'tcp_packets' and    bad_values will be 'tcp_retrans'  - for the metric 'connection_errors_percent' the ok_values will be    'new_sockets' and the bad_values will be 'syn_timeouts'  # noqa: E501
+
+        :param ok_values: The ok_values of this GrpcTimeSeriesV2.  # noqa: E501
+        :type: list[float]
+        """
+
+        self._ok_values = ok_values
+
+    @property
+    def bad_values(self):
+        """Gets the bad_values of this GrpcTimeSeriesV2.  # noqa: E501
+
+
+        :return: The bad_values of this GrpcTimeSeriesV2.  # noqa: E501
+        :rtype: list[float]
+        """
+        return self._bad_values
+
+    @bad_values.setter
+    def bad_values(self, bad_values):
+        """Sets the bad_values of this GrpcTimeSeriesV2.
+
+
+        :param bad_values: The bad_values of this GrpcTimeSeriesV2.  # noqa: E501
+        :type: list[float]
+        """
+
+        self._bad_values = bad_values
 
     def to_dict(self):
         """Returns the model properties as a dict"""

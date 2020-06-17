@@ -32,30 +32,35 @@ class TestAuthzServiceApi(unittest.TestCase):
     def test_get_token_from_key(self):
         """Test case for get_token_from_key
 
+        if key id + secret in db, returns an Authz-signed token if the api key is not in the database or doesn't match the secret given \"permission denied\" error wil be returned.  # noqa: E501
         """
         pass
 
     def test_get_user_auth_tenant_token(self):
         """Test case for get_user_auth_tenant_token
 
+        If user is authorized for the tenant, returns an Authz-signed token If user unauthorized for tenant, a \"permission denied\" error will be returned.  # noqa: E501
         """
         pass
 
     def test_get_user_auth_tenant_token2(self):
         """Test case for get_user_auth_tenant_token2
 
+        If user is authorized for the tenant, returns an Authz-signed token If user unauthorized for tenant, a \"permission denied\" error will be returned.  # noqa: E501
         """
         pass
 
     def test_get_user_auth_tenants(self):
         """Test case for get_user_auth_tenants
 
+        Return list of tenants that the user can access Will return an empty list if the user isn't allowed for any tenant.  # noqa: E501
         """
         pass
 
     def test_get_user_auth_tenants2(self):
         """Test case for get_user_auth_tenants2
 
+        Return list of tenants that the user can access Will return an empty list if the user isn't allowed for any tenant.  # noqa: E501
         """
         pass
 

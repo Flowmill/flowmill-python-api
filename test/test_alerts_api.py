@@ -32,24 +32,28 @@ class TestAlertsApi(unittest.TestCase):
     def test_get_alert(self):
         """Test case for get_alert
 
+        Get alert with specific id  # noqa: E501
         """
         pass
 
     def test_post_alerts(self):
         """Test case for post_alerts
 
+        Post an alert to our alert-access write endpoint  # noqa: E501
         """
         pass
 
     def test_read_alerts(self):
         """Test case for read_alerts
 
+        Make a request to our alerts database  # noqa: E501
         """
         pass
 
     def test_update_alert_status(self):
         """Test case for update_alert_status
 
+        Updates the Status of alerts  # noqa: E501
         """
         pass
 

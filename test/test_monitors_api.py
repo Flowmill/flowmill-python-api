@@ -35,12 +35,6 @@ class TestMonitorsApi(unittest.TestCase):
         """
         pass
 
-    def test_evaluate_monitor(self):
-        """Test case for evaluate_monitor
-
-        """
-        pass
-
     def test_get_monitor(self):
         """Test case for get_monitor
 

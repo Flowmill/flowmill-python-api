@@ -34,7 +34,7 @@ class AuthzServiceApi(object):
         self.api_client = api_client
 
     def get_token_from_key(self, key_id, **kwargs):  # noqa: E501
-        """get_token_from_key  # noqa: E501
+        """if key id + secret in db, returns an Authz-signed token if the api key is not in the database or doesn't match the secret given \"permission denied\" error wil be returned.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -55,7 +55,7 @@ class AuthzServiceApi(object):
             return data
 
     def get_token_from_key_with_http_info(self, key_id, **kwargs):  # noqa: E501
-        """get_token_from_key  # noqa: E501
+        """if key id + secret in db, returns an Authz-signed token if the api key is not in the database or doesn't match the secret given \"permission denied\" error wil be returned.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -131,7 +131,7 @@ class AuthzServiceApi(object):
             collection_formats=collection_formats)
 
     def get_user_auth_tenant_token(self, tenant_id, **kwargs):  # noqa: E501
-        """get_user_auth_tenant_token  # noqa: E501
+        """If user is authorized for the tenant, returns an Authz-signed token If user unauthorized for tenant, a \"permission denied\" error will be returned.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -152,7 +152,7 @@ class AuthzServiceApi(object):
             return data
 
     def get_user_auth_tenant_token_with_http_info(self, tenant_id, **kwargs):  # noqa: E501
-        """get_user_auth_tenant_token  # noqa: E501
+        """If user is authorized for the tenant, returns an Authz-signed token If user unauthorized for tenant, a \"permission denied\" error will be returned.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -228,7 +228,7 @@ class AuthzServiceApi(object):
             collection_formats=collection_formats)
 
     def get_user_auth_tenant_token2(self, tenant_id, **kwargs):  # noqa: E501
-        """get_user_auth_tenant_token2  # noqa: E501
+        """If user is authorized for the tenant, returns an Authz-signed token If user unauthorized for tenant, a \"permission denied\" error will be returned.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -249,7 +249,7 @@ class AuthzServiceApi(object):
             return data
 
     def get_user_auth_tenant_token2_with_http_info(self, tenant_id, **kwargs):  # noqa: E501
-        """get_user_auth_tenant_token2  # noqa: E501
+        """If user is authorized for the tenant, returns an Authz-signed token If user unauthorized for tenant, a \"permission denied\" error will be returned.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -325,7 +325,7 @@ class AuthzServiceApi(object):
             collection_formats=collection_formats)
 
     def get_user_auth_tenants(self, **kwargs):  # noqa: E501
-        """get_user_auth_tenants  # noqa: E501
+        """Return list of tenants that the user can access Will return an empty list if the user isn't allowed for any tenant.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -345,7 +345,7 @@ class AuthzServiceApi(object):
             return data
 
     def get_user_auth_tenants_with_http_info(self, **kwargs):  # noqa: E501
-        """get_user_auth_tenants  # noqa: E501
+        """Return list of tenants that the user can access Will return an empty list if the user isn't allowed for any tenant.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -414,7 +414,7 @@ class AuthzServiceApi(object):
             collection_formats=collection_formats)
 
     def get_user_auth_tenants2(self, **kwargs):  # noqa: E501
-        """get_user_auth_tenants2  # noqa: E501
+        """Return list of tenants that the user can access Will return an empty list if the user isn't allowed for any tenant.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -434,7 +434,7 @@ class AuthzServiceApi(object):
             return data
 
     def get_user_auth_tenants2_with_http_info(self, **kwargs):  # noqa: E501
-        """get_user_auth_tenants2  # noqa: E501
+        """Return list of tenants that the user can access Will return an empty list if the user isn't allowed for any tenant.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

@@ -32,12 +32,7 @@ class TestSystemOverviewServiceApi(unittest.TestCase):
     def test_get_agent_info(self):
         """Test case for get_agent_info
 
-        """
-        pass
-
-    def test_get_connection_summary(self):
-        """Test case for get_connection_summary
-
+        Request info about connected agents  # noqa: E501
         """
         pass
 
@@ -47,20 +42,8 @@ class TestSystemOverviewServiceApi(unittest.TestCase):
         """
         pass
 
-    def test_get_latency_summary(self):
-        """Test case for get_latency_summary
-
-        """
-        pass
-
     def test_get_latency_summary_v2(self):
         """Test case for get_latency_summary_v2
-
-        """
-        pass
-
-    def test_get_traffic_stats(self):
-        """Test case for get_traffic_stats
 
         """
         pass

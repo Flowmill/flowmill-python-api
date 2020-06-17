@@ -34,7 +34,7 @@ class AlertsApi(object):
         self.api_client = api_client
 
     def get_alert(self, id, **kwargs):  # noqa: E501
-        """get_alert  # noqa: E501
+        """Get alert with specific id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -55,7 +55,7 @@ class AlertsApi(object):
             return data
 
     def get_alert_with_http_info(self, id, **kwargs):  # noqa: E501
-        """get_alert  # noqa: E501
+        """Get alert with specific id  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -131,7 +131,7 @@ class AlertsApi(object):
             collection_formats=collection_formats)
 
     def post_alerts(self, body, **kwargs):  # noqa: E501
-        """post_alerts  # noqa: E501
+        """Post an alert to our alert-access write endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -152,7 +152,7 @@ class AlertsApi(object):
             return data
 
     def post_alerts_with_http_info(self, body, **kwargs):  # noqa: E501
-        """post_alerts  # noqa: E501
+        """Post an alert to our alert-access write endpoint  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -228,7 +228,7 @@ class AlertsApi(object):
             collection_formats=collection_formats)
 
     def read_alerts(self, **kwargs):  # noqa: E501
-        """read_alerts  # noqa: E501
+        """Make a request to our alerts database  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -256,7 +256,7 @@ class AlertsApi(object):
             return data
 
     def read_alerts_with_http_info(self, **kwargs):  # noqa: E501
-        """read_alerts  # noqa: E501
+        """Make a request to our alerts database  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -349,7 +349,7 @@ class AlertsApi(object):
             collection_formats=collection_formats)
 
     def update_alert_status(self, id, body, **kwargs):  # noqa: E501
-        """update_alert_status  # noqa: E501
+        """Updates the Status of alerts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
@@ -371,7 +371,7 @@ class AlertsApi(object):
             return data
 
     def update_alert_status_with_http_info(self, id, body, **kwargs):  # noqa: E501
-        """update_alert_status  # noqa: E501
+        """Updates the Status of alerts  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True

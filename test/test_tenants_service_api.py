@@ -32,36 +32,42 @@ class TestTenantsServiceApi(unittest.TestCase):
     def test_create_agent_key(self):
         """Test case for create_agent_key
 
+        Add new agent key to the db. returns a \"permission denied\" error if user not authorized to create an agent key  # noqa: E501
         """
         pass
 
     def test_create_api_key(self):
         """Test case for create_api_key
 
+        Add new api key to the db. returns a \"permission denied\" error if user not authorized to create an api key  # noqa: E501
         """
         pass
 
     def test_create_tenant(self):
         """Test case for create_tenant
 
+        Create new tenant. This will send welcome email to a specified admin email address.  # noqa: E501
         """
         pass
 
     def test_create_user(self):
         """Test case for create_user
 
+        Create a user with specific tenant and role and send them welcome email. Only \"admin\" role allowed to create a user and will be verified. Receive: email, role Return: \"permission denied\" if not allowed to create new user.         \"already exists\" if user already exists for this tenant.         \"internal\" on fail         user_id if successful  # noqa: E501
         """
         pass
 
     def test_delete_agent_key(self):
         """Test case for delete_agent_key
 
+        Delete an agent key given a specified key_id. returns a \"permission denied\" error if user not authorized to delete an agent key returns \"Not Found\" error if no such key id exists.  # noqa: E501
         """
         pass
 
     def test_delete_api_key(self):
         """Test case for delete_api_key
 
+        Delete an api key given a specified key_id. returns a \"permission denied\" error if user not authorized to delete an api key returns \"Not Found\" error if no such key id exists.  # noqa: E501
         """
         pass
 
@@ -80,24 +86,28 @@ class TestTenantsServiceApi(unittest.TestCase):
     def test_list_agent_keys(self):
         """Test case for list_agent_keys
 
+        List all agent keys for a specific tenant. returns a \"permission denied\" error if user not authorized to ask for a list of agent keys, or an empty list if no keys exist.  # noqa: E501
         """
         pass
 
     def test_list_api_keys(self):
         """Test case for list_api_keys
 
+        List all keys for a specific user and tenant. returns a \"permission denied\" error if user not authorized to ask for a list of api keys, or an empty list if no keys exist.  # noqa: E501
         """
         pass
 
     def test_list_tenants(self):
         """Test case for list_tenants
 
+        Tenants  # noqa: E501
         """
         pass
 
     def test_list_users(self):
         """Test case for list_users
 
+        List of users, roles and status enabled/disabled Receive: empty message Return: \"permission denied\" on unauthorized/disabled user.         list of users for that same tenant, if successful  # noqa: E501
         """
         pass
 
@@ -110,6 +120,7 @@ class TestTenantsServiceApi(unittest.TestCase):
     def test_update_user(self):
         """Test case for update_user
 
+        Change user's permissions from USER to ADMIN or from \"enabled\" to \"disabled\" and vice versa. Admins cannot change their own role or status. Role must be 'user' or 'admin, status musr be 'enabled' or 'disabled' Receive: user_id, role, status Return: \"permission denied\" if not allowed to make a change.         \"internal error\" if attempts to change \"flowmill\" role of if         transaction failed. \"invalid argument\" if an invalid role or status         has been used.          empty message if successful  # noqa: E501
         """
         pass
 
