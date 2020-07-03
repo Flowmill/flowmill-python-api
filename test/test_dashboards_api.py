@@ -29,45 +29,45 @@ class TestDashboardsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_delete_dashboard(self):
-        """Test case for delete_dashboard
+    def test_dashboards_delete_dashboard(self):
+        """Test case for dashboards_delete_dashboard
 
         """
         pass
 
-    def test_delete_favorite(self):
-        """Test case for delete_favorite
+    def test_dashboards_delete_favorite(self):
+        """Test case for dashboards_delete_favorite
 
         """
         pass
 
-    def test_get_dashboard(self):
-        """Test case for get_dashboard
+    def test_dashboards_get_dashboard(self):
+        """Test case for dashboards_get_dashboard
 
         """
         pass
 
-    def test_get_dashboard2(self):
-        """Test case for get_dashboard2
+    def test_dashboards_get_dashboard2(self):
+        """Test case for dashboards_get_dashboard2
 
         """
         pass
 
-    def test_post_dashboard(self):
-        """Test case for post_dashboard
+    def test_dashboards_post_dashboard(self):
+        """Test case for dashboards_post_dashboard
 
         """
         pass
 
-    def test_post_favorite(self):
-        """Test case for post_favorite
+    def test_dashboards_post_favorite(self):
+        """Test case for dashboards_post_favorite
 
         Mark favorite  # noqa: E501
         """
         pass
 
-    def test_put_dashboard(self):
-        """Test case for put_dashboard
+    def test_dashboards_put_dashboard(self):
+        """Test case for dashboards_put_dashboard
 
         """
         pass

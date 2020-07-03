@@ -29,32 +29,38 @@ class TestMonitorsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_delete_monitor(self):
-        """Test case for delete_monitor
+    def test_monitors_delete_monitor(self):
+        """Test case for monitors_delete_monitor
 
         """
         pass
 
-    def test_get_monitor(self):
-        """Test case for get_monitor
+    def test_monitors_evaluate_monitor(self):
+        """Test case for monitors_evaluate_monitor
 
         """
         pass
 
-    def test_get_monitor2(self):
-        """Test case for get_monitor2
+    def test_monitors_get_monitor(self):
+        """Test case for monitors_get_monitor
 
         """
         pass
 
-    def test_post_monitor(self):
-        """Test case for post_monitor
+    def test_monitors_get_monitor2(self):
+        """Test case for monitors_get_monitor2
 
         """
         pass
 
-    def test_put_monitor(self):
-        """Test case for put_monitor
+    def test_monitors_post_monitor(self):
+        """Test case for monitors_post_monitor
+
+        """
+        pass
+
+    def test_monitors_put_monitor(self):
+        """Test case for monitors_put_monitor
 
         """
         pass

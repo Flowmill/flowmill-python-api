@@ -29,50 +29,50 @@ class TestIntegrationsServiceApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_authorize_pagerduty(self):
-        """Test case for authorize_pagerduty
+    def test_integrations_service_authorize_pagerduty(self):
+        """Test case for integrations_service_authorize_pagerduty
 
         authorize new PagerDuty client and obtain an internal access token  # noqa: E501
         """
         pass
 
-    def test_authorize_slack(self):
-        """Test case for authorize_slack
+    def test_integrations_service_authorize_slack(self):
+        """Test case for integrations_service_authorize_slack
 
         authorize new slack team and obtain an internal access token  # noqa: E501
         """
         pass
 
-    def test_delete_pagerduty_authorized(self):
-        """Test case for delete_pagerduty_authorized
+    def test_integrations_service_delete_pagerduty_authorized(self):
+        """Test case for integrations_service_delete_pagerduty_authorized
 
         delete token with specified id  # noqa: E501
         """
         pass
 
-    def test_delete_slack_authorized(self):
-        """Test case for delete_slack_authorized
+    def test_integrations_service_delete_slack_authorized(self):
+        """Test case for integrations_service_delete_slack_authorized
 
         delete token with specified id  # noqa: E501
         """
         pass
 
-    def test_list_pagerduty_authorized(self):
-        """Test case for list_pagerduty_authorized
+    def test_integrations_service_list_pagerduty_authorized(self):
+        """Test case for integrations_service_list_pagerduty_authorized
 
         list all clients authorized for this tenant  # noqa: E501
         """
         pass
 
-    def test_list_slack_authorized(self):
-        """Test case for list_slack_authorized
+    def test_integrations_service_list_slack_authorized(self):
+        """Test case for integrations_service_list_slack_authorized
 
         list all teams authorized for this tenant  # noqa: E501
         """
         pass
 
-    def test_reauthorize_slack(self):
-        """Test case for reauthorize_slack
+    def test_integrations_service_reauthorize_slack(self):
+        """Test case for integrations_service_reauthorize_slack
 
         reauthorize slack team with the specified id  # noqa: E501
         """

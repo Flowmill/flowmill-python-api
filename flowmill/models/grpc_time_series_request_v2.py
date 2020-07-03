@@ -43,7 +43,6 @@ class GrpcTimeSeriesRequestV2(object):
         'top_k': 'int',
         'no_rollups': 'bool',
         'label_equality': 'list[GrpcLabelEqualityPair]',
-        'aggregation': 'GrpcAggregationMethod',
         'no_zero_padding': 'bool'
     }
 
@@ -60,11 +59,10 @@ class GrpcTimeSeriesRequestV2(object):
         'top_k': 'topK',
         'no_rollups': 'noRollups',
         'label_equality': 'labelEquality',
-        'aggregation': 'aggregation',
         'no_zero_padding': 'noZeroPadding'
     }
 
-    def __init__(self, end=None, duration=None, num_steps=None, source_filters=None, destination_filters=None, metric=None, source_grouping=None, destination_grouping=None, directionality=None, top_k=None, no_rollups=None, label_equality=None, aggregation=None, no_zero_padding=None):  # noqa: E501
+    def __init__(self, end=None, duration=None, num_steps=None, source_filters=None, destination_filters=None, metric=None, source_grouping=None, destination_grouping=None, directionality=None, top_k=None, no_rollups=None, label_equality=None, no_zero_padding=None):  # noqa: E501
         """GrpcTimeSeriesRequestV2 - a model defined in Swagger"""  # noqa: E501
 
         self._end = None
@@ -79,7 +77,6 @@ class GrpcTimeSeriesRequestV2(object):
         self._top_k = None
         self._no_rollups = None
         self._label_equality = None
-        self._aggregation = None
         self._no_zero_padding = None
         self.discriminator = None
 
@@ -107,8 +104,6 @@ class GrpcTimeSeriesRequestV2(object):
             self.no_rollups = no_rollups
         if label_equality is not None:
             self.label_equality = label_equality
-        if aggregation is not None:
-            self.aggregation = aggregation
         if no_zero_padding is not None:
             self.no_zero_padding = no_zero_padding
 
@@ -379,29 +374,6 @@ class GrpcTimeSeriesRequestV2(object):
         """
 
         self._label_equality = label_equality
-
-    @property
-    def aggregation(self):
-        """Gets the aggregation of this GrpcTimeSeriesRequestV2.  # noqa: E501
-
-        This is deprecated because we only allow one aggregation method for each metric, so there's no way for the client to provide any useful information through this field. It will be removed in subsequent API releases.  # noqa: E501
-
-        :return: The aggregation of this GrpcTimeSeriesRequestV2.  # noqa: E501
-        :rtype: GrpcAggregationMethod
-        """
-        return self._aggregation
-
-    @aggregation.setter
-    def aggregation(self, aggregation):
-        """Sets the aggregation of this GrpcTimeSeriesRequestV2.
-
-        This is deprecated because we only allow one aggregation method for each metric, so there's no way for the client to provide any useful information through this field. It will be removed in subsequent API releases.  # noqa: E501
-
-        :param aggregation: The aggregation of this GrpcTimeSeriesRequestV2.  # noqa: E501
-        :type: GrpcAggregationMethod
-        """
-
-        self._aggregation = aggregation
 
     @property
     def no_zero_padding(self):

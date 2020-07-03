@@ -29,29 +29,29 @@ class TestAlertsApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_alert(self):
-        """Test case for get_alert
+    def test_alerts_get_alert(self):
+        """Test case for alerts_get_alert
 
         Get alert with specific id  # noqa: E501
         """
         pass
 
-    def test_post_alerts(self):
-        """Test case for post_alerts
+    def test_alerts_post_alerts(self):
+        """Test case for alerts_post_alerts
 
         Post an alert to our alert-access write endpoint  # noqa: E501
         """
         pass
 
-    def test_read_alerts(self):
-        """Test case for read_alerts
+    def test_alerts_read_alerts(self):
+        """Test case for alerts_read_alerts
 
         Make a request to our alerts database  # noqa: E501
         """
         pass
 
-    def test_update_alert_status(self):
-        """Test case for update_alert_status
+    def test_alerts_update_alert_status(self):
+        """Test case for alerts_update_alert_status
 
         Updates the Status of alerts  # noqa: E501
         """

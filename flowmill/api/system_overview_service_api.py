@@ -33,47 +33,43 @@ class SystemOverviewServiceApi(object):
             api_client = ApiClient()
         self.api_client = api_client
 
-    def get_agent_info(self, **kwargs):  # noqa: E501
-        """Request info about connected agents  # noqa: E501
+    def get_agent_info_v2(self, body, **kwargs):  # noqa: E501
+        """Request info about connected agents.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_agent_info(async_req=True)
+        >>> thread = api.get_agent_info_v2(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param datetime start: start of the time interval, default 30 minutes from \"end\".
-        :param datetime end: end of the time interval, default current time.
-        :param str step: timeseries step, default 10 seconds.
+        :param GrpcGetAgentInfoRequestV2 body: (required)
         :return: GrpcGetAgentInfoResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
         kwargs['_return_http_data_only'] = True
         if kwargs.get('async_req'):
-            return self.get_agent_info_with_http_info(**kwargs)  # noqa: E501
+            return self.get_agent_info_v2_with_http_info(body, **kwargs)  # noqa: E501
         else:
-            (data) = self.get_agent_info_with_http_info(**kwargs)  # noqa: E501
+            (data) = self.get_agent_info_v2_with_http_info(body, **kwargs)  # noqa: E501
             return data
 
-    def get_agent_info_with_http_info(self, **kwargs):  # noqa: E501
-        """Request info about connected agents  # noqa: E501
+    def get_agent_info_v2_with_http_info(self, body, **kwargs):  # noqa: E501
+        """Request info about connected agents.  # noqa: E501
 
         This method makes a synchronous HTTP request by default. To make an
         asynchronous HTTP request, please pass async_req=True
-        >>> thread = api.get_agent_info_with_http_info(async_req=True)
+        >>> thread = api.get_agent_info_v2_with_http_info(body, async_req=True)
         >>> result = thread.get()
 
         :param async_req bool
-        :param datetime start: start of the time interval, default 30 minutes from \"end\".
-        :param datetime end: end of the time interval, default current time.
-        :param str step: timeseries step, default 10 seconds.
+        :param GrpcGetAgentInfoRequestV2 body: (required)
         :return: GrpcGetAgentInfoResponse
                  If the method is called asynchronously,
                  returns the request thread.
         """
 
-        all_params = ['start', 'end', 'step']  # noqa: E501
+        all_params = ['body']  # noqa: E501
         all_params.append('async_req')
         all_params.append('_return_http_data_only')
         all_params.append('_preload_content')
@@ -84,22 +80,20 @@ class SystemOverviewServiceApi(object):
             if key not in all_params:
                 raise TypeError(
                     "Got an unexpected keyword argument '%s'"
-                    " to method get_agent_info" % key
+                    " to method get_agent_info_v2" % key
                 )
             params[key] = val
         del params['kwargs']
+        # verify the required parameter 'body' is set
+        if ('body' not in params or
+                params['body'] is None):
+            raise ValueError("Missing the required parameter `body` when calling `get_agent_info_v2`")  # noqa: E501
 
         collection_formats = {}
 
         path_params = {}
 
         query_params = []
-        if 'start' in params:
-            query_params.append(('start', params['start']))  # noqa: E501
-        if 'end' in params:
-            query_params.append(('end', params['end']))  # noqa: E501
-        if 'step' in params:
-            query_params.append(('step', params['step']))  # noqa: E501
 
         header_params = {}
 
@@ -107,6 +101,8 @@ class SystemOverviewServiceApi(object):
         local_var_files = {}
 
         body_params = None
+        if 'body' in params:
+            body_params = params['body']
         # HTTP header `Accept`
         header_params['Accept'] = self.api_client.select_header_accept(
             ['application/json'])  # noqa: E501
@@ -119,7 +115,7 @@ class SystemOverviewServiceApi(object):
         auth_settings = ['bearer']  # noqa: E501
 
         return self.api_client.call_api(
-            '/api/v1/system-overview/agent-info', 'GET',
+            '/api/v2/system-overview/agent-info', 'POST',
             path_params,
             query_params,
             header_params,

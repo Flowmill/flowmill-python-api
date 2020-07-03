@@ -29,28 +29,41 @@ class TestTimeSeriesApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_autocomplete_options_v2(self):
-        """Test case for get_autocomplete_options_v2
+    def test_time_series_get_autocomplete_options(self):
+        """Test case for time_series_get_autocomplete_options
 
         """
         pass
 
-    def test_get_entity_timeseries(self):
-        """Test case for get_entity_timeseries
+    def test_time_series_get_autocomplete_options_v2(self):
+        """Test case for time_series_get_autocomplete_options_v2
+
+        """
+        pass
+
+    def test_time_series_get_entity_timeseries(self):
+        """Test case for time_series_get_entity_timeseries
 
         Returns non-zero one-sided timeseries matching the specified query.  # noqa: E501
         """
         pass
 
-    def test_get_flow_timeseries(self):
-        """Test case for get_flow_timeseries
+    def test_time_series_get_flow_timeseries(self):
+        """Test case for time_series_get_flow_timeseries
 
         Returns non-zero, two-sided timeseries matching the specified query.  # noqa: E501
         """
         pass
 
-    def test_get_time_series_v2(self):
-        """Test case for get_time_series_v2
+    def test_time_series_get_time_series(self):
+        """Test case for time_series_get_time_series
+
+        Returns non-zero, two-sided timeseries matching the specified query.  # noqa: E501
+        """
+        pass
+
+    def test_time_series_get_time_series_v2(self):
+        """Test case for time_series_get_time_series_v2
 
         Returns non-zero, two-sided timeseries matching the specified query.  # noqa: E501
         """

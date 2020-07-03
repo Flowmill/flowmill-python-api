@@ -4,16 +4,16 @@ All URIs are relative to *https://app.flowmill.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**get_agent_info**](SystemOverviewServiceApi.md#get_agent_info) | **GET** /api/v1/system-overview/agent-info | Request info about connected agents
+[**get_agent_info_v2**](SystemOverviewServiceApi.md#get_agent_info_v2) | **POST** /api/v2/system-overview/agent-info | Request info about connected agents.
 [**get_connection_summary_v2**](SystemOverviewServiceApi.md#get_connection_summary_v2) | **POST** /api/v2/system-overview/connection-summary | 
 [**get_latency_summary_v2**](SystemOverviewServiceApi.md#get_latency_summary_v2) | **POST** /api/v2/system-overview/latency-summary | 
 [**get_traffic_stats_v2**](SystemOverviewServiceApi.md#get_traffic_stats_v2) | **POST** /api/v2/system-overview/traffic-stats | 
 
 
-# **get_agent_info**
-> GrpcGetAgentInfoResponse get_agent_info(start=start, end=end, step=step)
+# **get_agent_info_v2**
+> GrpcGetAgentInfoResponse get_agent_info_v2(body)
 
-Request info about connected agents
+Request info about connected agents.
 
 ### Example
 ```python
@@ -31,25 +31,21 @@ configuration.api_key['Authorization'] = 'YOUR_API_KEY'
 
 # create an instance of the API class
 api_instance = flowmill.SystemOverviewServiceApi(flowmill.ApiClient(configuration))
-start = '2013-10-20T19:20:30+01:00' # datetime | start of the time interval, default 30 minutes from \"end\". (optional)
-end = '2013-10-20T19:20:30+01:00' # datetime | end of the time interval, default current time. (optional)
-step = 'step_example' # str | timeseries step, default 10 seconds. (optional)
+body = flowmill.GrpcGetAgentInfoRequestV2() # GrpcGetAgentInfoRequestV2 | 
 
 try:
-    # Request info about connected agents
-    api_response = api_instance.get_agent_info(start=start, end=end, step=step)
+    # Request info about connected agents.
+    api_response = api_instance.get_agent_info_v2(body)
     pprint(api_response)
 except ApiException as e:
-    print("Exception when calling SystemOverviewServiceApi->get_agent_info: %s\n" % e)
+    print("Exception when calling SystemOverviewServiceApi->get_agent_info_v2: %s\n" % e)
 ```
 
 ### Parameters
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **start** | **datetime**| start of the time interval, default 30 minutes from \&quot;end\&quot;. | [optional] 
- **end** | **datetime**| end of the time interval, default current time. | [optional] 
- **step** | **str**| timeseries step, default 10 seconds. | [optional] 
+ **body** | [**GrpcGetAgentInfoRequestV2**](GrpcGetAgentInfoRequestV2.md)|  | 
 
 ### Return type
 

@@ -222,6 +222,7 @@ class GrpcGetCostTableRequest(object):
     def cross_az_dollars_per_gb(self):
         """Gets the cross_az_dollars_per_gb of this GrpcGetCostTableRequest.  # noqa: E501
 
+        Value used to estimate the cost of cross-zone traffic. Default is 0.  Queries that fail to specify either this or egress_dollars_per_gb will return an INVALID_ARGUMENT error as at least one cost must be > 0.  # noqa: E501
 
         :return: The cross_az_dollars_per_gb of this GrpcGetCostTableRequest.  # noqa: E501
         :rtype: float
@@ -232,6 +233,7 @@ class GrpcGetCostTableRequest(object):
     def cross_az_dollars_per_gb(self, cross_az_dollars_per_gb):
         """Sets the cross_az_dollars_per_gb of this GrpcGetCostTableRequest.
 
+        Value used to estimate the cost of cross-zone traffic. Default is 0.  Queries that fail to specify either this or egress_dollars_per_gb will return an INVALID_ARGUMENT error as at least one cost must be > 0.  # noqa: E501
 
         :param cross_az_dollars_per_gb: The cross_az_dollars_per_gb of this GrpcGetCostTableRequest.  # noqa: E501
         :type: float
@@ -243,6 +245,7 @@ class GrpcGetCostTableRequest(object):
     def egress_dollars_per_gb(self):
         """Gets the egress_dollars_per_gb of this GrpcGetCostTableRequest.  # noqa: E501
 
+        Value used to estimate the cost of egress traffic. Default is 0.  Queries that fail to specify either this or cross_az_dollars_per_gb will return an INVALID_ARGUMENT error as at least one cost must be > 0.  # noqa: E501
 
         :return: The egress_dollars_per_gb of this GrpcGetCostTableRequest.  # noqa: E501
         :rtype: float
@@ -253,6 +256,7 @@ class GrpcGetCostTableRequest(object):
     def egress_dollars_per_gb(self, egress_dollars_per_gb):
         """Sets the egress_dollars_per_gb of this GrpcGetCostTableRequest.
 
+        Value used to estimate the cost of egress traffic. Default is 0.  Queries that fail to specify either this or cross_az_dollars_per_gb will return an INVALID_ARGUMENT error as at least one cost must be > 0.  # noqa: E501
 
         :param egress_dollars_per_gb: The egress_dollars_per_gb of this GrpcGetCostTableRequest.  # noqa: E501
         :type: float
@@ -264,6 +268,7 @@ class GrpcGetCostTableRequest(object):
     def minimum_cost_percent(self):
         """Gets the minimum_cost_percent of this GrpcGetCostTableRequest.  # noqa: E501
 
+        Return rows representing services that contribute > minimum_cost_percent of total estimated costs.  Example: use 0.01 for all connections contributing to > 1% of costs.  If unspecified, this will default to 0 (no filtering).  # noqa: E501
 
         :return: The minimum_cost_percent of this GrpcGetCostTableRequest.  # noqa: E501
         :rtype: float
@@ -274,6 +279,7 @@ class GrpcGetCostTableRequest(object):
     def minimum_cost_percent(self, minimum_cost_percent):
         """Sets the minimum_cost_percent of this GrpcGetCostTableRequest.
 
+        Return rows representing services that contribute > minimum_cost_percent of total estimated costs.  Example: use 0.01 for all connections contributing to > 1% of costs.  If unspecified, this will default to 0 (no filtering).  # noqa: E501
 
         :param minimum_cost_percent: The minimum_cost_percent of this GrpcGetCostTableRequest.  # noqa: E501
         :type: float

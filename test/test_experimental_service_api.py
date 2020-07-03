@@ -29,14 +29,14 @@ class TestExperimentalServiceApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_cost_table(self):
-        """Test case for get_cost_table
+    def test_experimental_service_get_cost_table(self):
+        """Test case for experimental_service_get_cost_table
 
         """
         pass
 
-    def test_get_summary_table(self):
-        """Test case for get_summary_table
+    def test_experimental_service_get_summary_table(self):
+        """Test case for experimental_service_get_summary_table
 
         """
         pass

@@ -33,8 +33,9 @@ class GrpcAutocompleteRequestV2(object):
     swagger_types = {
         'end': 'datetime',
         'duration': 'str',
-        'filters': 'list[GrpcFilter]',
-        'label': 'str',
+        'source_filters': 'list[GrpcFilter]',
+        'destination_filters': 'list[GrpcFilter]',
+        'label_side_pair': 'AutocompleteRequestV2LabelSidePair',
         'metrics': 'list[str]',
         'directionality': 'GrpcDirectionality'
     }
@@ -42,19 +43,21 @@ class GrpcAutocompleteRequestV2(object):
     attribute_map = {
         'end': 'end',
         'duration': 'duration',
-        'filters': 'filters',
-        'label': 'label',
+        'source_filters': 'sourceFilters',
+        'destination_filters': 'destinationFilters',
+        'label_side_pair': 'labelSidePair',
         'metrics': 'metrics',
         'directionality': 'directionality'
     }
 
-    def __init__(self, end=None, duration=None, filters=None, label=None, metrics=None, directionality=None):  # noqa: E501
+    def __init__(self, end=None, duration=None, source_filters=None, destination_filters=None, label_side_pair=None, metrics=None, directionality=None):  # noqa: E501
         """GrpcAutocompleteRequestV2 - a model defined in Swagger"""  # noqa: E501
 
         self._end = None
         self._duration = None
-        self._filters = None
-        self._label = None
+        self._source_filters = None
+        self._destination_filters = None
+        self._label_side_pair = None
         self._metrics = None
         self._directionality = None
         self.discriminator = None
@@ -63,10 +66,12 @@ class GrpcAutocompleteRequestV2(object):
             self.end = end
         if duration is not None:
             self.duration = duration
-        if filters is not None:
-            self.filters = filters
-        if label is not None:
-            self.label = label
+        if source_filters is not None:
+            self.source_filters = source_filters
+        if destination_filters is not None:
+            self.destination_filters = destination_filters
+        if label_side_pair is not None:
+            self.label_side_pair = label_side_pair
         if metrics is not None:
             self.metrics = metrics
         if directionality is not None:
@@ -117,50 +122,71 @@ class GrpcAutocompleteRequestV2(object):
         self._duration = duration
 
     @property
-    def filters(self):
-        """Gets the filters of this GrpcAutocompleteRequestV2.  # noqa: E501
+    def source_filters(self):
+        """Gets the source_filters of this GrpcAutocompleteRequestV2.  # noqa: E501
 
         Returns autocomplete options within this set of filters.  We can use this to provide typeahead hints for a partially constructed query. For example, we can query: give me all the options within a specific environment or namespace.  # noqa: E501
 
-        :return: The filters of this GrpcAutocompleteRequestV2.  # noqa: E501
+        :return: The source_filters of this GrpcAutocompleteRequestV2.  # noqa: E501
         :rtype: list[GrpcFilter]
         """
-        return self._filters
+        return self._source_filters
 
-    @filters.setter
-    def filters(self, filters):
-        """Sets the filters of this GrpcAutocompleteRequestV2.
+    @source_filters.setter
+    def source_filters(self, source_filters):
+        """Sets the source_filters of this GrpcAutocompleteRequestV2.
 
         Returns autocomplete options within this set of filters.  We can use this to provide typeahead hints for a partially constructed query. For example, we can query: give me all the options within a specific environment or namespace.  # noqa: E501
 
-        :param filters: The filters of this GrpcAutocompleteRequestV2.  # noqa: E501
+        :param source_filters: The source_filters of this GrpcAutocompleteRequestV2.  # noqa: E501
         :type: list[GrpcFilter]
         """
 
-        self._filters = filters
+        self._source_filters = source_filters
 
     @property
-    def label(self):
-        """Gets the label of this GrpcAutocompleteRequestV2.  # noqa: E501
+    def destination_filters(self):
+        """Gets the destination_filters of this GrpcAutocompleteRequestV2.  # noqa: E501
 
-        Label to return options for.  Note: this expects a label with our legacy 's' and 'd' prefixes, such as, for example, 'senv' or 'drole'.  # noqa: E501
 
-        :return: The label of this GrpcAutocompleteRequestV2.  # noqa: E501
-        :rtype: str
+        :return: The destination_filters of this GrpcAutocompleteRequestV2.  # noqa: E501
+        :rtype: list[GrpcFilter]
         """
-        return self._label
+        return self._destination_filters
 
-    @label.setter
-    def label(self, label):
-        """Sets the label of this GrpcAutocompleteRequestV2.
+    @destination_filters.setter
+    def destination_filters(self, destination_filters):
+        """Sets the destination_filters of this GrpcAutocompleteRequestV2.
 
-        Label to return options for.  Note: this expects a label with our legacy 's' and 'd' prefixes, such as, for example, 'senv' or 'drole'.  # noqa: E501
 
-        :param label: The label of this GrpcAutocompleteRequestV2.  # noqa: E501
-        :type: str
+        :param destination_filters: The destination_filters of this GrpcAutocompleteRequestV2.  # noqa: E501
+        :type: list[GrpcFilter]
         """
 
-        self._label = label
+        self._destination_filters = destination_filters
+
+    @property
+    def label_side_pair(self):
+        """Gets the label_side_pair of this GrpcAutocompleteRequestV2.  # noqa: E501
+
+        The label and side of flow for which we'll return autocomplete options.  Examples:  { label = 'role', side = 'SOURCE' } will return options for 'srole'.  { label = 'id', side = 'DESTINATION'} will return options for 'did'.  # noqa: E501
+
+        :return: The label_side_pair of this GrpcAutocompleteRequestV2.  # noqa: E501
+        :rtype: AutocompleteRequestV2LabelSidePair
+        """
+        return self._label_side_pair
+
+    @label_side_pair.setter
+    def label_side_pair(self, label_side_pair):
+        """Sets the label_side_pair of this GrpcAutocompleteRequestV2.
+
+        The label and side of flow for which we'll return autocomplete options.  Examples:  { label = 'role', side = 'SOURCE' } will return options for 'srole'.  { label = 'id', side = 'DESTINATION'} will return options for 'did'.  # noqa: E501
+
+        :param label_side_pair: The label_side_pair of this GrpcAutocompleteRequestV2.  # noqa: E501
+        :type: AutocompleteRequestV2LabelSidePair
+        """
+
+        self._label_side_pair = label_side_pair
 
     @property
     def metrics(self):

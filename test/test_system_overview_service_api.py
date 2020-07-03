@@ -29,27 +29,48 @@ class TestSystemOverviewServiceApi(unittest.TestCase):
     def tearDown(self):
         pass
 
-    def test_get_agent_info(self):
-        """Test case for get_agent_info
+    def test_system_overview_service_get_agent_info(self):
+        """Test case for system_overview_service_get_agent_info
 
         Request info about connected agents  # noqa: E501
         """
         pass
 
-    def test_get_connection_summary_v2(self):
-        """Test case for get_connection_summary_v2
+    def test_system_overview_service_get_connection_summary(self):
+        """Test case for system_overview_service_get_connection_summary
+
+        Example request: curl -H \"$TOKEN\" \"http://127.0.0.1:8080/api/v1/system_overview/connection_summary?end=2019-08-04T10:47:59.182Z&summaryType=0\"  # noqa: E501
+        """
+        pass
+
+    def test_system_overview_service_get_connection_summary_v2(self):
+        """Test case for system_overview_service_get_connection_summary_v2
 
         """
         pass
 
-    def test_get_latency_summary_v2(self):
-        """Test case for get_latency_summary_v2
+    def test_system_overview_service_get_latency_summary(self):
+        """Test case for system_overview_service_get_latency_summary
+
+        Example request: curl -H \"$TOKEN\" \"http://127.0.0.1:8080/api/v1/system_overview/latency_summary?min_mrtt=20&latency_class=2\"  # noqa: E501
+        """
+        pass
+
+    def test_system_overview_service_get_latency_summary_v2(self):
+        """Test case for system_overview_service_get_latency_summary_v2
 
         """
         pass
 
-    def test_get_traffic_stats_v2(self):
-        """Test case for get_traffic_stats_v2
+    def test_system_overview_service_get_traffic_stats(self):
+        """Test case for system_overview_service_get_traffic_stats
+
+        Example request: curl -H \"$TOKEN\" \"http://127.0.0.1:8080/api/v1/system_overview/traffic_stats?end=2019-07-10T10:47:59.182Z\"  # noqa: E501
+        """
+        pass
+
+    def test_system_overview_service_get_traffic_stats_v2(self):
+        """Test case for system_overview_service_get_traffic_stats_v2
 
         """
         pass

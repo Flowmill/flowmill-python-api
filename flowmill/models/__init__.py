@@ -15,7 +15,8 @@
 from __future__ import absolute_import
 
 # import models into model package
-from flowmill.models.aggregation_method_quantile_params import AggregationMethodQuantileParams
+from flowmill.models.autocomplete_request_v2_label_side_pair import AutocompleteRequestV2LabelSidePair
+from flowmill.models.autocomplete_request_v2_side import AutocompleteRequestV2Side
 from flowmill.models.component_component_traffic_filter import ComponentComponentTrafficFilter
 from flowmill.models.component_traffic_filter_value_label_pair import ComponentTrafficFilterValueLabelPair
 from flowmill.models.condition_op import ConditionOp
@@ -25,7 +26,6 @@ from flowmill.models.dashboard_permission import DashboardPermission
 from flowmill.models.get_agent_info_response_agent_count import GetAgentInfoResponseAgentCount
 from flowmill.models.get_agent_info_response_agent_instance import GetAgentInfoResponseAgentInstance
 from flowmill.models.get_agent_info_response_data_point import GetAgentInfoResponseDataPoint
-from flowmill.models.grpc_aggregation_method import GrpcAggregationMethod
 from flowmill.models.grpc_alert import GrpcAlert
 from flowmill.models.grpc_alert_status import GrpcAlertStatus
 from flowmill.models.grpc_alerts_list import GrpcAlertsList
@@ -55,6 +55,7 @@ from flowmill.models.grpc_entity_timeseries_response import GrpcEntityTimeseries
 from flowmill.models.grpc_filter import GrpcFilter
 from flowmill.models.grpc_fractional_coverage_predicate import GrpcFractionalCoveragePredicate
 from flowmill.models.grpc_fractional_coverage_predicate_threshold import GrpcFractionalCoveragePredicateThreshold
+from flowmill.models.grpc_get_agent_info_request_v2 import GrpcGetAgentInfoRequestV2
 from flowmill.models.grpc_get_agent_info_response import GrpcGetAgentInfoResponse
 from flowmill.models.grpc_get_connection_summary_request_v2 import GrpcGetConnectionSummaryRequestV2
 from flowmill.models.grpc_get_connection_summary_response_v2 import GrpcGetConnectionSummaryResponseV2

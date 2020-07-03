@@ -107,7 +107,7 @@ Class | Method | HTTP request | Description
 *MonitorsApi* | [**get_monitor2**](docs/MonitorsApi.md#get_monitor2) | **GET** /api/v1/monitors/{id} | 
 *MonitorsApi* | [**post_monitor**](docs/MonitorsApi.md#post_monitor) | **POST** /api/v1/monitors | 
 *MonitorsApi* | [**put_monitor**](docs/MonitorsApi.md#put_monitor) | **PUT** /api/v1/monitors/{id} | 
-*SystemOverviewServiceApi* | [**get_agent_info**](docs/SystemOverviewServiceApi.md#get_agent_info) | **GET** /api/v1/system-overview/agent-info | Request info about connected agents
+*SystemOverviewServiceApi* | [**get_agent_info_v2**](docs/SystemOverviewServiceApi.md#get_agent_info_v2) | **POST** /api/v2/system-overview/agent-info | Request info about connected agents.
 *SystemOverviewServiceApi* | [**get_connection_summary_v2**](docs/SystemOverviewServiceApi.md#get_connection_summary_v2) | **POST** /api/v2/system-overview/connection-summary | 
 *SystemOverviewServiceApi* | [**get_latency_summary_v2**](docs/SystemOverviewServiceApi.md#get_latency_summary_v2) | **POST** /api/v2/system-overview/latency-summary | 
 *SystemOverviewServiceApi* | [**get_traffic_stats_v2**](docs/SystemOverviewServiceApi.md#get_traffic_stats_v2) | **POST** /api/v2/system-overview/traffic-stats | 
@@ -133,7 +133,8 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
- - [AggregationMethodQuantileParams](docs/AggregationMethodQuantileParams.md)
+ - [AutocompleteRequestV2LabelSidePair](docs/AutocompleteRequestV2LabelSidePair.md)
+ - [AutocompleteRequestV2Side](docs/AutocompleteRequestV2Side.md)
  - [ComponentComponentTrafficFilter](docs/ComponentComponentTrafficFilter.md)
  - [ComponentTrafficFilterValueLabelPair](docs/ComponentTrafficFilterValueLabelPair.md)
  - [ConditionOp](docs/ConditionOp.md)
@@ -143,7 +144,6 @@ Class | Method | HTTP request | Description
  - [GetAgentInfoResponseAgentCount](docs/GetAgentInfoResponseAgentCount.md)
  - [GetAgentInfoResponseAgentInstance](docs/GetAgentInfoResponseAgentInstance.md)
  - [GetAgentInfoResponseDataPoint](docs/GetAgentInfoResponseDataPoint.md)
- - [GrpcAggregationMethod](docs/GrpcAggregationMethod.md)
  - [GrpcAlert](docs/GrpcAlert.md)
  - [GrpcAlertStatus](docs/GrpcAlertStatus.md)
  - [GrpcAlertsList](docs/GrpcAlertsList.md)
@@ -173,6 +173,7 @@ Class | Method | HTTP request | Description
  - [GrpcFilter](docs/GrpcFilter.md)
  - [GrpcFractionalCoveragePredicate](docs/GrpcFractionalCoveragePredicate.md)
  - [GrpcFractionalCoveragePredicateThreshold](docs/GrpcFractionalCoveragePredicateThreshold.md)
+ - [GrpcGetAgentInfoRequestV2](docs/GrpcGetAgentInfoRequestV2.md)
  - [GrpcGetAgentInfoResponse](docs/GrpcGetAgentInfoResponse.md)
  - [GrpcGetConnectionSummaryRequestV2](docs/GrpcGetConnectionSummaryRequestV2.md)
  - [GrpcGetConnectionSummaryResponseV2](docs/GrpcGetConnectionSummaryResponseV2.md)
